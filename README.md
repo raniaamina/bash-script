@@ -1,2 +1,2 @@
 # bash-script
-Skrip Bash yang Kadang Berguna
+Skrip Bash yang Kadang Berguna 

@@ -1,2 +1,2 @@
 # bash-script
-Skrip Bash yang Kadang Berguna 
+Skrip Bash dan Beberapa Konfigurasi (.config) yang Kadang Berguna 

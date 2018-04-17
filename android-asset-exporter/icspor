@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#creating directory
+
+mkdir -p icons/drawable-mdpi
+mkdir -p icons/drawable-hdpi
+mkdir -p icons/drawable-xhdpi
+mkdir -p icons/drawable-xxhdpi
+mkdir -p icons/drawable-xxxhdpi
+
+#enter directry
+cd svg-icons
+
+# exoprting image
+for i in *.svg; 
+do 
+rsvg-convert -a -d 96 -p 96 -h 24 -f png "$i" -o "../icons/drawable-mdpi/${i%.*}.png";
+rsvg-convert -a -d 96 -p 96 -h 36 -f png "$i" -o "../icons/drawable-hdpi/${i%.*}.png";
+rsvg-convert -a -d 96 -p 96 -h 48 -f png "$i" -o "../icons/drawable-xhdpi/${i%.*}.png";
+rsvg-convert -a -d 96 -p 96 -h 72 -f png "$i" -o "../icons/drawable-xxhdpi/${i%.*}.png";
+rsvg-convert -a -d 96 -p 96 -h 96 -f png "$i" -o "../icons/drawable-xxxhdpi/${i%.*}.png"; 
+done
+
+cd ..
+

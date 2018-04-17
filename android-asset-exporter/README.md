@@ -9,19 +9,19 @@ Skrip ini menggunakan perkakas rsvg-converter sebagai eksporter SVG-nya, silakan
 
 ## Rincian ukuran
 Ikon
-mdpi 24x24
-hdpi 36x36
-xhdpi 48x48
-xxhdpi 72x72
-xxxhdpi 96x96
+- mdpi 24x24
+- hdpi 36x36
+- xhdpi 48x48
+- xxhdpi 72x72
+- xxxhdpi 96x96
 
 Gambar
 (khusus untuk gambar ini, saya hanya mengatur tingginya, sedang lebarnya menyesuaikan)
-mdpi 210
-hdpi 315
-xhdpi 420
-xxhdpi 630
-xxxhdpi 840
+- mdpi 210
+- hdpi 315
+- xhdpi 420
+- xxhdpi 630
+- xxxhdpi 840
 
 ## Cara menggunakan
 Unduh dan salin skrip `aspor` dan `icspor` ke dalam direktori `/usr/bin`. Kemudian siapkan berkas-berkas svg yang akan di ekspor.

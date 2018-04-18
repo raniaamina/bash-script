@@ -1,0 +1,75 @@
+#!/bin/bash
+export opsi="$1"
+export dir="$2"
+pwd=$('pwd')
+dpix="96"
+dpiy="96"
+
+dirtype[0]="mdpi"
+dirtype[1]="hdpi"
+dirtype[2]="xhdpi"
+dirtype[3]="xxhdpi"
+dirtype[4]="xxxhdpi"
+
+function EXEC(){
+  if [ -z $dir ]; then
+    dir=$pwd
+  fi
+
+  cd $dir
+
+  for i in {0..4}
+  do
+    mkdir -p $type/drawable-${dirtype[i]}
+    count=`find . -maxdepth 1 -type f -name "*.svg" | wc -l`
+
+    if [ $count -gt 0 ]; then
+      for svg in $(ls *.svg)
+      do
+        rsvg-convert -a -d $dpix -p $dpiy -h ${size[i]} -f png "$svg" -o "$type/drawable-${dirtype[i]}/${svg%.*}.png";
+      done
+    else
+      EMPTY
+    fi
+  done
+  cd $pwd
+}
+
+function HELP(){
+  echo -e "ran help
+    \033[1mran [option] [dir] \033[0m
+
+  \033[1m-h\033[0m,\tthis help
+  \033[1m-i\033[0m,\tfor icons
+  \033[1m-m\033[0m,\tfor image"
+}
+
+function EMPTY(){
+  echo "no file svg found"
+}
+
+if [ -z $opsi ]; then
+  HELP
+else
+  if [ $opsi == "-i" ]; then
+    type="icons"
+    size[0]='24'
+    size[1]='36'
+    size[2]='48'
+    size[3]='72'
+    size[4]='96'
+    EXEC
+  elif [ $opsi == "-m" ]; then
+    type="image"
+    size[0]='210'
+    size[1]='315'
+    size[2]='420'
+    size[3]='630'
+    size[4]='840'
+    EXEC
+  elif [ $opsi == "-h" ]; then
+    HELP
+  else
+    HELP
+  fi
+fi

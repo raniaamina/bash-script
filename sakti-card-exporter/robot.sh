@@ -81,14 +81,14 @@ fi
 # --output=pattern -> penamaan file output
 # file.svg -> nama file svg nya
 #
-./generator.py --vartype="NAME" --datafile=/tmp/data-sementara.csv --extravars="qr-template.png=>lokasiqr" --dpi="300" --format="PNG" --output=/tmp/hasil/%VAR_nama%.png template.svg
+python2 generator.py --vartype="NAME" --datafile=/tmp/data-sementara.csv --extravars="qr-template.png=>lokasiqr" --dpi="300" --format="PNG" --output=/tmp/hasil/%VAR_nama%.png template.svg
 echo "Selesai menjalankan ink-generator."
-echo "Masukkan nama berkas untuk menyimpan file zip"
+echo "Masukkan nama berkas untuk menyimpan file zip (tanpa imbuhan .zip)"
 read -p "Berkas: " NAMA_OUTPUT
 read -e -p "Lokasi penyimpanan: " TEMPAT_OUTPUT
 echo "Memproses..."
 mkdir -p $TEMPAT_OUTPUT
-zip "$TEMPAT_OUTPUT/$NAMA_OUTPUT.zip" /tmp/hasil/*
+zip -j "$TEMPAT_OUTPUT/$NAMA_OUTPUT.zip" /tmp/hasil/*
 # remove temp file
 rm -rf $TEMPAT_QR /tmp/hasil /tmp/data-sementara.csv
 echo "DONE!"

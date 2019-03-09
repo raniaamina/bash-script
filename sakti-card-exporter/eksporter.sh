@@ -8,7 +8,7 @@ Tulis Nama Berkas CSV Anda
 ==========================\n
 Contoh Penulisan: \nBerkas.csv, /home/user/Berkas.csv, atau ../Berkas.csv\n\n"
 # choose the database
-read -p "Berkas: " DATACSV
+read -e -p "Berkas: " DATACSV
 
 # export option
 echo

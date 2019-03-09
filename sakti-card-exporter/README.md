@@ -39,3 +39,31 @@ note:
 
 - eksporter.sh saat ini support untuk 4 kolom, jika ingin menambah kolom lagi, silakan bereksperimen :)
 ```
+
+#### Catatan Khusus
+Pada beberapa sistem Linux ketika menjalankan perkakas ini sering ditemukan galat berikut (meskipun sangat jarang);
+```
+Traceback (most recent call last):
+  File "generator.py", line 362, in <module>
+    Process_csv_file(csvfile)
+  File "generator.py", line 306, in Process_csv_file
+    csvdata = Prepare_data(csvdata)
+  File "generator.py", line 257, in Prepare_data
+    value = value.replace('&', '&amp;')
+AttributeError: 'list' object has no attribute 'replace'
+
+```
+Untuk mengatasi hal tersebut, silakan ikuti langkah-langkah khusus berikut.
+
+- Masuk direktori sakti-card-eksporter:
+- Pasang virtualenv: `sudo apt install python-virtualenv`
+- Jalankan perintah di bawah ini
+```
+$ mkdir env
+$ virtualenv env
+$ source env/bin/activate
+```
+
+jalankan seperti biasa: bash eksporter.sh
+setelah selesai, keluarlah dari virtualenv dengan perintah:
+`$ deactivate`

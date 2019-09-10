@@ -1,6 +1,6 @@
 ## inkporter
 
-Perkakas sederhana untuk mengekspor berkas svg dari Inkscape berdasarkan pattern objek ID yang telah ditentukan.
+Perkakas sederhana untuk mengekspor berkas svg dari Inkscape berdasarkan pattern objek ID yang telah ditentukan. Perkakas ini dapat juga disebut dengan *SVG extractor*.
 
 ### Dependensi
 

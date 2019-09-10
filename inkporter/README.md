@@ -10,8 +10,7 @@ Perkakas sederhana untuk mengekspor berkas svg dari Inkscape berdasarkan pattern
 
 #### Persiapan
 1. Unduh berkas `inkporter` (saya asumsikan berkas disimpan di home Anda)
-2. Atur izin berkas agar menjadi executable
-Buka terminal Anda, kemudian jalankan perintah 
+2. Atur izin berkas agar menjadi executable. Buka terminal Anda, kemudian jalankan perintah 
 ```bash
 sudo chmod +x ~/inkporter
 ```

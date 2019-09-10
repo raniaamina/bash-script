@@ -1,0 +1,67 @@
+#!/bin/bash
+echo " "
+echo "Selamat datang di:"
+echo " _       _                     _            
+(_)_ __ | | ___ __   ___  _ __| |_ ___ _ __ 
+| | '_ \| |/ / '_ \ / _ \| '__| __/ _ \ '__|
+| | | | |   <| |_) | (_) | |  | ||  __/ |   
+|_|_| |_|_|\_\ .__/ \___/|_|   \__\___|_|   
+             |_| 
+============================================"
+echo " "
+echo "Silakan pilih format output yang Anda inginkan"
+SOURCE=$1
+IDPATTERN=$2
+echo " "
+PS3='Enter the number: '
+options=("png" "pdf" "svg" "cancel")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "png")
+            echo
+            echo "Berkas akan diekspor ke format PNG"
+            read -e -p "Buat Sebuah Folder untuk Menyimpan Hasil Ekspor Anda: " DIRECTORY
+            mkdir -p $DIRECTORY
+            for id in $(inkscape -z -S $SOURCE | grep $IDPATTERN | cut -d "," -f 1)
+            do 
+            inkscape -z -i $id -e "$DIRECTORY/$id.png" -f $SOURCE
+            echo "Sedang memproses $id ke $DIRECTORY/$id.png"
+            done
+            break
+            ;;
+        "pdf")
+            echo "Berkas akan diekspor ke format PDF"
+            read -e -p "Buat Sebuah Folder untuk Menyimpan Hasil Ekspor Anda: " DIRECTORY
+            mkdir -p $DIRECTORY
+            for id in $(inkscape -z -S $SOURCE | grep $IDPATTERN | cut -d "," -f 1)
+            do 
+            inkscape -z -i $id -l "$DIRECTORY/$id.svg" -f $SOURCE
+            echo "Sedang memproses $id ke $DIRECTORY/$id.svg"
+            done
+            cd $DIRECTORY
+            for i in *.svg; do inkscape "$i" --export-area-page --without-gui "$i" -A ${i%.*}.pdf;done
+            rm *.svg
+            cd .. 
+            break
+            ;;
+        "svg")
+            echo "Berkas akan diekspor ke format SVG"
+            read -e -p "Buat Sebuah Folder untuk Menyimpan Hasil Ekspor Anda: " DIRECTORY
+            mkdir -p $DIRECTORY
+            for id in $(inkscape -z -S $SOURCE | grep $IDPATTERN | cut -d "," -f 1)
+            do 
+            inkscape -z -i $id -j -l "$DIRECTORY/$id.svg" -f $SOURCE
+            echo "Sedang memproses $id ke $DIRECTORY/$id.svg"
+            done
+            break
+            ;;
+        "cancel")
+            exit
+            ;;
+        *) echo "Salah ndul, Ulangi! $REPLY";;
+    esac
+done;
+echo " "
+echo "Selamat, berkas berhasil diekspor dan disimpan di folder '$DIRECTORY' "
+echo " "

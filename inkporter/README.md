@@ -47,6 +47,7 @@ Skrip ini memanglah sangat sederhana, namun semoga dapat membantu untuk menuntas
 - ekspor ikon (baik untuk keperluan personal maupun dijual ke pasar kreatif)
 - ekspor halaman-halaman buku 
 - dan hal-hal lainnya
+
 agar menjadi lebih lebih efisien dan cepat.
 
 ### Lain-Lain

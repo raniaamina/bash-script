@@ -5,6 +5,7 @@ Perkakas sederhana untuk mengekspor berkas svg dari Inkscape berdasarkan pattern
 ### Dependensi
 
 - Inkscape
+- ghostscript (khusus untuk PDF CMYK)
 
 ### Cara Penggunaan
 
@@ -41,7 +42,7 @@ Saat pemrosesan berlangsung Anda akan diminta untuk memilih format output (PNG, 
 
 Tunggu sampai proses selesai, dan ... selamat, objek-objek dalam berkas svg Anda berhasil diekspor sesuai dengan ID yang telah Anda tentukan.
 
-### Kegunaan
+### Kegunaan & Format Ekspor yang Didukung
 Skrip ini memanglah sangat sederhana, namun semoga dapat membantu untuk menuntaskan beberapa pekerjaan Anda semisal;
 - ekspor ikon (baik untuk keperluan personal maupun dijual ke pasar kreatif)
 - ekspor halaman-halaman buku 
@@ -49,6 +50,12 @@ Skrip ini memanglah sangat sederhana, namun semoga dapat membantu untuk menuntas
 
 agar menjadi lebih lebih efisien dan cepat.
 
+Untuk saat ini inkporter dapat melakukan ekspor ke beberapa format berikut:
+- PNG
+- PDF
+- PDF CMYK (memerlukan ghostscript)
+- EPS Default
+
 ### Lain-Lain
-Skrip ini bebas untuk dimodifikasi dan sebarkan dengan atau tanpa memberikan keterangan tentang kreator untuk tujuan apapun. 
-Untuk berdiskusi seputar inkporter ini, silakan hubungi @raniaamina di Telegram atau via surel di alamat me@raniaamina.id.
+Skrip ini bebas untuk digunakan, dimodifikasi, dan sebarkan dengan atau tanpa memberikan keterangan tentang kreator untuk tujuan apapun. 
+Untuk berdiskusi seputar inkporter ini atau ingin berdonasi karena terbantu karena perkakas ini, silakan hubungi @raniaamina di Telegram atau via surel di alamat me@raniaamina.id.

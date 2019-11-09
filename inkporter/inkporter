@@ -14,7 +14,7 @@ SOURCE=$1
 IDPATTERN=$2
 echo " "
 PS3='Enter the number: '
-options=("png" "pdf" "svg" "cancel")
+options=("png" "pdf" "pdf-cmyk" "svg" "eps-default" "cancel")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -45,6 +45,23 @@ do
             cd .. 
             break
             ;;
+         "pdf-cmyk")
+            echo "Berkas akan diekspor ke format PDF (CMYK)"
+            read -e -p "Buat Sebuah Folder untuk Menyimpan Hasil Ekspor Anda: " DIRECTORY
+            mkdir -p $DIRECTORY/.temp
+            for id in $(inkscape -z -S $SOURCE | grep $IDPATTERN | cut -d "," -f 1)
+            do 
+            inkscape -z -i $id -l "$DIRECTORY/.temp/$id.svg" -f $SOURCE
+            echo "Sedang memproses $id ke $DIRECTORY/$id.svg"
+            done
+            cd $DIRECTORY/.temp
+            for i in *.svg; do inkscape "$i" --export-area-page --without-gui "$i" -A ${i%.*}.pdf;done
+            rm *.svg
+            for i in *.pdf; do gs -dSAFER -dBATCH -dNOPAUSE -dNOCACHE -sDEVICE=pdfwrite -dAutoRotatePages=/None -sColorConversionStrategy=CMYK -dProcessColorModel=/DeviceCMYK -dAutoFilterColorImages=false -dAutoFilterGrayImages=false -dColorImageFilter=/FlateEncode -dGrayImageFilter=/FlateEncode -dDownsampleMonoImages=false -dDownsampleGrayImages=false -sOutputFile="$i" "$i"; done
+            mv ./* ../ && cd .. && rm -r .temp && cd ..
+            cd .. 
+            break
+            ;;
         "svg")
             echo "Berkas akan diekspor ke format SVG"
             read -e -p "Buat Sebuah Folder untuk Menyimpan Hasil Ekspor Anda: " DIRECTORY
@@ -54,6 +71,21 @@ do
             inkscape -z -i $id -j -l "$DIRECTORY/$id.svg" -f $SOURCE
             echo "Sedang memproses $id ke $DIRECTORY/$id.svg"
             done
+            break
+            ;;
+        "eps-default")
+            echo "Berkas akan diekspor ke format EPS (Default)"
+            read -e -p "Buat Sebuah Folder untuk Menyimpan Hasil Ekspor Anda: " DIRECTORY
+            mkdir -p $DIRECTORY/.temp
+            for id in $(inkscape -z -S $SOURCE | grep $IDPATTERN | cut -d "," -f 1)
+            do 
+            inkscape -z -i $id -l "$DIRECTORY/.temp/$id.svg" -f $SOURCE
+            echo "Sedang memproses $id ke $DIRECTORY/$id.svg"
+            done
+            cd $DIRECTORY/.temp
+            for i in *.svg; do inkscape "$i" --export-area-page --without-gui "$i" -E ${i%.*}.eps --export-ignore-filters --export-text-to-path --export-ps-level=3;done
+            rm *.svg && mv ./* ../ && cd .. && rm -r .temp
+            cd .. 
             break
             ;;
         "cancel")

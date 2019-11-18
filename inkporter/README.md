@@ -87,13 +87,14 @@ Misalnya berkas svg Anda (contoh: icon.svg) ada di lokal disk D di dalam folder 
 
 yang merepotkan adalah ketika menetukan tempat penyimpanan hasil ekspor, karena Anda haruslah mengetik alamat penuh.
 
-Nah, salah satu solusinya adalah dengan menjalankan inkporter di langsung di folder tempat berkas svg disimpan. Pada contoh di atas, baiknya Anda melakukan;
+Nah, salah satu solusinya adalah dengan menjalankan inkporter langsung di folder tempat berkas svg disimpan. Pada contoh di atas, baiknya Anda melakukan;
 
 ```
 cd /mnt/d/pekerjaan
+```
 
-# selanjutnya baru
-
+selanjutnya baru
+```
 inkporter icon.svg nama-id
 ```
 

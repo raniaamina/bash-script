@@ -68,7 +68,7 @@ do
             mkdir -p $DIRECTORY
             for id in $(inkscape -z -S $SOURCE | grep $IDPATTERN | cut -d "," -f 1)
             do 
-            inkscape -z -i $id -j -l "$DIRECTORY/$id.svg" -f $SOURCE
+            inkscape -z -i $id -l "$DIRECTORY/$id.svg" -f $SOURCE
             echo "Sedang memproses $id ke $DIRECTORY/$id.svg"
             done
             break

@@ -71,12 +71,14 @@ Inkporter dapat dijalankan di Windows 10 dengan melalui WSL. Silakan ikuti langk
     - Masukkan username dan sandi untuk akun Linux ini
     
 - Persiapan pemasangan Inkporter
-    - sudo apt update
-    - sudo apt install inkscape ghostscript git
-    - wget https://raw.githubusercontent.com/raniaamina/bash-script/master/inkporter/inkporter -P ~/.local/bin/inkporter
-    - sudo chmod +x ~/.local/bin/inkporter
-    - tutup terminal kemudian buka lagi
-
+    ```
+    sudo apt update
+    sudo apt install inkscape ghostscript git
+    wget https://raw.githubusercontent.com/raniaamina/bash-script/master/inkporter/inkporter -P ~/.local/bin/inkporter
+    sudo chmod +x ~/.local/bin/inkporter
+    ```
+    tutup terminal kemudian buka lagi
+    
 Sampai pada tahap ini, Anda sudah dapat menggunakan inkporter sesuai panduan di atas. Ah, untuk mempermudah, saya sarankan untuk membuat symlink/pintasan ke drive C atau D anda di home. Sebagai informasi, lokasi C dan D di wsl ini ada di /mnt/c dan /mnt/d, dengan demikian untuk mengkses berkas berkas kerja (SVG) yang telah dibuat, Anda herus mengarahkannya terlebih dahulu ke path tersebut. 
 
 Misalnya berkas svg Anda (contoh: icon.svg) ada di lokal disk D di dalam folder bernama "pekerjaan" => D:\pekerjaan\icon.svg, maka untuk menjalankan inkporter, silakan atur perintahnya seperti berikut;

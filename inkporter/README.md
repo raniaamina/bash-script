@@ -57,7 +57,7 @@ Untuk saat ini inkporter dapat melakukan ekspor ke beberapa format berikut:
 - EPS Default
 
 
-### Menggunakan Inkpoter di Windows (udah pindah aja pake linux, bikin ribet)
+### Menggunakan Inkporter di Windows (udah pindah aja pake linux, bikin ribet)
 Inkporter dapat dijalankan di Windows 10 dengan melalui WSL. Silakan ikuti langkah-langkah berikut.
 -  Aktifkan WSL 
     - Bukan menu, lalu pada kotak pencarian ketik "Turn Windows features on or off"

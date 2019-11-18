@@ -56,6 +56,47 @@ Untuk saat ini inkporter dapat melakukan ekspor ke beberapa format berikut:
 - PDF CMYK (memerlukan ghostscript)
 - EPS Default
 
+
+### Menggunakan Inkpoter di Windows
+Inkporter dapat dijalankan di Windows 10 dengan melalui WSL. Silakan ikuti langkah-langkah berikut.
+-  Aktifkan WSL 
+    - Bukan menu, lalu pada kotak pencarian ketik "Turn Windows features on or off"
+    - Setelah terbuka, kemudian centang "Windows Subsystem for Linux" 
+    - Reboot
+    
+- Pasang Ubuntu via Store
+    - Buka Windows store
+    - Cari "Ubuntu" kemudian klik Install
+    - Setelah selesai bukan terminal ubuntu tersebut
+    - Masukkan username dan sandi untuk akun Linux ini
+    
+- Persiapan pemasangan Inkporter
+    - sudo apt update
+    - sudo apt install inkscape ghostscript git
+    - wget https://raw.githubusercontent.com/raniaamina/bash-script/master/inkporter/inkporter -P ~/.local/bin/inkporter
+    - sudo chmod +x ~/.local/bin/inkporter
+    - tutup terminal kemudian buka lagi
+
+Sampai pada tahap ini, Anda sudah dapat menggunakan inkporter sesuai panduan di atas. Ah, untuk mempermudah, saya sarankan untuk membuat symlink/pintasan ke drive C atau D anda di home. Sebagai informasi, lokasi C dan D di wsl ini ada di /mnt/c dan /mnt/d, dengan demikian untuk mengkses berkas berkas kerja (SVG) yang telah dibuat, Anda herus mengarahkannya terlebih dahulu ke path tersebut. 
+
+Misalnya berkas svg Anda (contoh: icon.svg) ada di lokal disk D di dalam folder bernama "pekerjaan" => D:\pekerjaan\icon.svg, maka untuk menjalankan inkporter, silakan atur perintahnya seperti berikut;
+
+`inkporter /mnt/d/pekerjaan/icon.svg nama-id`
+
+yang merepotkan adalah ketika menetukan tempat penyimpanan hasil ekspor, karena Anda haruslah mengetik alamat penuh.
+
+Nah, salah satu solusinya adalah dengan menjalankan inkporter di langsung di folder tempat berkas svg disimpan. Pada contoh di atas, baiknya Anda melakukan;
+
+```
+cd /mnt/d/pekerjaan
+
+# selanjutnya baru
+
+inkporter icon.svg nama-id
+```
+
+dengan demikian Anda cukup mengetik nama folder tempat hasil akan disimpan, dan tara folder tersebut akan langsung ada di folder yang sama dengan berkas svg Anda.
+
 ### Lain-Lain
 Skrip ini bebas untuk digunakan, dimodifikasi, dan sebarkan dengan atau tanpa memberikan keterangan tentang kreator untuk tujuan apapun. 
 Untuk berdiskusi seputar inkporter ini atau ingin berdonasi karena terbantu karena perkakas ini, silakan hubungi @raniaamina di Telegram atau via surel di alamat me@raniaamina.id.

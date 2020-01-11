@@ -102,4 +102,4 @@ dengan demikian Anda cukup mengetik nama folder tempat hasil akan disimpan, dan 
 
 ### Lain-Lain
 Skrip ini bebas untuk digunakan, dimodifikasi, dan sebarkan dengan atau tanpa memberikan keterangan tentang kreator untuk tujuan apapun. 
-Untuk berdiskusi seputar inkporter ini atau ingin berdonasi karena terbantu karena perkakas ini, silakan hubungi @raniaamina di Telegram atau via surel di alamat me@raniaamina.id.
+Untuk berdiskusi seputar inkporter ini atau ingin berdonasi karena terbantu karena perkakas ini, silakan hubungi @raniaamina di Telegram atau via surel di alamat me@raniaamina.id. Donasi dapat berupa apapun  termasuk secangkir kopi :").

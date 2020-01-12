@@ -74,7 +74,7 @@ Inkporter dapat dijalankan di Windows 10 dengan melalui WSL. Silakan ikuti langk
     ```
     sudo apt update
     sudo apt install inkscape ghostscript git
-    wget https://raw.githubusercontent.com/raniaamina/bash-script/master/inkporter/inkporter -P ~/.local/bin/inkporter
+    wget https://raw.githubusercontent.com/raniaamina/bash-script/master/inkporter/inkporter -P ~/.local/bin/
     sudo chmod +x ~/.local/bin/inkporter
     ```
     tutup terminal kemudian buka lagi

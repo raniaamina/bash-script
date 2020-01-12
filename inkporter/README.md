@@ -10,15 +10,16 @@ Perkakas sederhana untuk mengekspor berkas svg dari Inkscape berdasarkan pattern
 ### Cara Penggunaan
 
 #### Persiapan
-1. Unduh berkas `inkporter` (saya asumsikan berkas disimpan di home Anda)
-2. Atur izin berkas agar menjadi executable. Buka terminal Anda, kemudian jalankan perintah 
+1. Unduh berkas inkporter
+Buka terminal Anda kemudian jalankan perintah di bawah ini.
 ```bash
-sudo chmod +x ~/inkporter
+sudo wget https://raw.githubusercontent.com/raniaamina/bash-script/master/inkporter/inkporter -P /usr/local/bin/
 ```
-3. Supaya dapat dijalankan di mana saja, silakan salin berkas tersebut ke folder /usr/local/bin dengan perintah;
+2. Atur agar inkporter dapat dieksekusi
 ```bash
-sudo cp ~/inkporter /usr/local/bin/inkporter
+sudo chmod +x /usr/local/bin/inkporter
 ```
+
 
 #### Penggunaan
 Untuk dapat menggunakan inkporter ini, Anda diharuskan untuk mengeset objek ID pada masing-masing objek yang Anda inginkan. Objek ID di Inkscape dapat di set melalui dialog objek yang dapat dipanggil dengan pintasan ctrl+shift+o.

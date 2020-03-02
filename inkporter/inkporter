@@ -33,15 +33,15 @@ do
         "pdf")
             echo "Berkas akan diekspor ke format PDF"
             read -e -p "Buat Sebuah Folder untuk Menyimpan Hasil Ekspor Anda: " DIRECTORY
-            mkdir -p $DIRECTORY
+            mkdir -p $DIRECTORY/.temp
             for id in $(inkscape -z -S $SOURCE | grep $IDPATTERN | cut -d "," -f 1)
             do 
-            inkscape -z -i $id -l "$DIRECTORY/$id.svg" -f $SOURCE
+            inkscape -z -i $id -l "$DIRECTORY/.temp/$id.svg" -f $SOURCE
             echo "Sedang memproses $id ke $DIRECTORY/$id.svg"
             done
-            cd $DIRECTORY
-            for i in *.svg; do inkscape "$i" --export-area-page --without-gui "$i" -A ${i%.*}.pdf;done
-            rm *.svg
+            cd $DIRECTORY/.temp
+            for i in *.svg; do inkscape "$i" --export-area-page --without-gui "$i" -A "../${i%.*}.pdf";done
+            cd .. && rm -r .temp
             cd .. 
             break
             ;;
@@ -64,11 +64,12 @@ do
             ;;
         "svg")
             echo "Berkas akan diekspor ke format SVG"
+            echo "Pastikan tidak ada objek clone dalam dokumen, id objek sudah tepat, dan Anda sudah siap gembira hari ini."
             read -e -p "Buat Sebuah Folder untuk Menyimpan Hasil Ekspor Anda: " DIRECTORY
             mkdir -p $DIRECTORY
             for id in $(inkscape -z -S $SOURCE | grep $IDPATTERN | cut -d "," -f 1)
             do 
-            inkscape -z -i $id -l "$DIRECTORY/$id.svg" -f $SOURCE
+            inkscape -z -j -i $id -f $SOURCE -l "$DIRECTORY/$id.svg" 
             echo "Sedang memproses $id ke $DIRECTORY/$id.svg"
             done
             break
@@ -83,8 +84,8 @@ do
             echo "Sedang memproses $id ke $DIRECTORY/$id.svg"
             done
             cd $DIRECTORY/.temp
-            for i in *.svg; do inkscape "$i" --export-area-page --without-gui "$i" -E ${i%.*}.eps --export-ignore-filters --export-text-to-path --export-ps-level=3;done
-            rm *.svg && mv ./* ../ && cd .. && rm -r .temp
+            for i in *.svg; do inkscape "$i" --without-gui "$i" -E "../${i%.*}.eps" --export-area-page --export-ignore-filters --export-text-to-path --export-ps-level={3};done
+            cd .. && rm -r .temp
             cd .. 
             break
             ;;

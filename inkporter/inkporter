@@ -21,11 +21,12 @@ do
         "png")
             echo
             echo "Berkas akan diekspor ke format PNG"
+            read -e -p "Tentukan DPI Ekspor (default 96 dpi): " -i "96" DPI
             read -e -p "Buat Sebuah Folder untuk Menyimpan Hasil Ekspor Anda: " DIRECTORY
             mkdir -p $DIRECTORY
             for id in $(inkscape -z -S $SOURCE | grep $IDPATTERN | cut -d "," -f 1)
             do 
-            inkscape -z -i $id -e "$DIRECTORY/$id.png" -f $SOURCE
+            inkscape -z -j -i $id -e "$DIRECTORY/$id.png" -d $DPI -f $SOURCE
             echo "Sedang memproses $id ke $DIRECTORY/$id.png"
             done
             break

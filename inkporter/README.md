@@ -47,6 +47,7 @@ Tunggu sampai proses selesai, dan ... selamat, objek-objek dalam berkas svg Anda
 Skrip ini memanglah sangat sederhana, namun semoga dapat membantu untuk menuntaskan beberapa pekerjaan Anda semisal;
 - ekspor ikon (baik untuk keperluan personal maupun dijual ke pasar kreatif)
 - ekspor halaman-halaman buku 
+- slicing assets (sangat berguna untuk ui/web designer)
 - dan hal-hal lainnya
 
 agar menjadi lebih lebih efisien dan cepat.

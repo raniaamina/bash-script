@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Toogle for Esc Button by Rania Amina
+
+# View Position
+VIEWPOS=$(xmodmap -pk | sed '7q;d')
+echo $VIEWPOS
+
+CHECKLINE=$(xmodmap -pk | sed '7q;d' | cut -b 21-26)
+# echo $CHECKLINE
+
+if [ $CHECKLINE == "Escape" ]; then
+    # menonaktifkan
+    echo "escape Dinonaktifkan"
+    xmodmap -e "keycode  9 = grave asciitilde Escape"
+    zenity --notification --text="Esc Nonactive"
+else
+    echo "escape Diaktifkan"
+    xmodmap -e "keycode  9 = Escape grave asciitilde"
+    zenity --notification --text="Esc Active"
+fi

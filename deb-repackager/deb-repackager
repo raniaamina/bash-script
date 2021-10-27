@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Set Variables
+APPNAME=$1
+WORKDIR=~/deb-repack/$APPNAME
+TIME=$(date '+%d_%a-%b-%Y_%H:%M_WIB')
+
+# Dependencies Check
+DPKGREPACK=$(dpkg-repack --version)
+if [[ $DPKGREPACK == dpkg-repack* ]]; then
+    echo ""
+else
+    echo "dpkg-repack not found. Let's install it first"
+    sudo apt install dpkg-repack
+fi
+
+if [ $(dpkg-query -W -f='${Status}' $APPNAME 2>/dev/null | grep -c "ok installed") -eq 0 ];
+then
+    echo -e "Are you kidding me?"
+    echo -e "$APPNAME not installed yet or package not found! \nHow you will repack it?\n"
+    exit 1
+fi
+
+# Process
+mkdir -p $WORKDIR
+cd $WORKDIR
+echo -e "Prepairing for $APPNAME package ...\n"
+echo -e "Start time: $TIME" &>> $WORKDIR/$APPNAME-$TIME.log
+echo -e "Repackaging $APPNAME ..."
+fakeroot -u dpkg-repack $APPNAME &>> $WORKDIR/$APPNAME-$TIME.log
+echo -e "Repackaging $APPNAME dependencies ..."
+fakeroot -u dpkg-repack $(apt-cache depends --false-suggests $APPNAME |awk '{print $2}' | sed '/^$/d') &>> $WORKDIR/$APPNAME-$TIME.log
+echo -e "Finish time: $TIME" &>> $WORKDIR/$APPNAME-$TIME.log
+echo -e "$APPNAME repacked in:\n $(echo $WORKDIR)\n"
+echo "Bye!"
+cd - > /dev/null
